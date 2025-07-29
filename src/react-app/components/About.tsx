@@ -20,18 +20,6 @@ export default function About() {
           >
             <MorphingMesh />
             
-            {/* Profile image overlay */}
-            <motion.div 
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              whileHover={{ scale: 1.1 }}
-            >
-              <motion.img
-                src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=160&h=160&fit=crop&crop=face"
-                alt=""
-                className="w-32 h-32 rounded-full object-cover border-2 border-orange-600/50 relative z-10"
-              />
-            </motion.div>
-            
             {/* Ambient glow effect */}
             <div className="absolute inset-0 bg-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-3xl rounded-full" />
           </motion.div>
