@@ -8,7 +8,7 @@ const skillCategories = [
     subcategories: [
       {
         subtitle: "Languages & Frameworks",
-        skills: ["Python", "TypeScript", "JavaScript", "Java", "R", "C++", "SQL", "Bash/Shell Scripting"]
+        skills: ["Python", "TypeScript", "JavaScript", "SQL", "Bash/Shell Scripting"]
       },
       {
         subtitle: "Frontend Development",
@@ -21,7 +21,15 @@ const skillCategories = [
       {
         subtitle: "Databases",
         skills: ["PostgreSQL", "SQLAlchemy", "MySQL", "MongoDB", "SQLite"]
-      }
+      }, 
+      {
+        subtitle: "Cloud Platforms",
+        skills: ["AWS", "Azure(Basics)", "GCP (Basics)"]
+      },
+      {
+        subtitle: "CI/CD & Project Tools",
+        skills: ["Git", "Github", "Github Actions", "Docker", "Kubernetes", "Terraform", "Grafana", "Jenkins", "bun", "Vercel", "Jira"]
+       }
     ]
   },
   {
@@ -30,11 +38,11 @@ const skillCategories = [
     subcategories: [
       {
         subtitle: "Machine Learning",
-        skills: ["Supervised & Unsupervised Learning", "Regression", "Classification", "XGBoost", "Clustering", "Ensemble Methods", "Anomaly Detection", "TF-IDF", "BERT", "Scikit-learn", "OpenCV", "Keras"]
+        skills: ["Regression", "Classification", "XGBoost", "Clustering", "Anomaly Detection", "TF-IDF", "BERT", "Keras"]
       },
       {
         subtitle: "Data Science & Analysis",
-        skills: ["EDA", "Feature Engineering",  "Statistics", "Mathematics", "Pandas", "NumPy", "Scikit-learn", "NLTK", "SpaCy", "Power BI", "Matplotlib"]
+        skills: ["EDA", "Feature Engineering",  "Statistics", "Mathematics", "Pandas", "NumPy", "Scikit-learn", "NLTK", "Power BI", "Matplotlib"]
       }
     ]
   },
@@ -44,33 +52,15 @@ const skillCategories = [
     subcategories: [
       {
         subtitle: "Deep Learning",
-        skills: ["CNN", "RNN", "LSTM", "Transformers", "Attention Mechanism", "GAN", "Autoencoder"]
+        skills: ["CNN", "RNN", "LSTM", "Transformers", "GAN"]
       },
       {
         subtitle: "Generative AI",
-        skills: ["GPT-4", "LLaMa", "GEMINI", "Vision-Language Models(LLaVa, LlaMa3.2-vision, Stable Diffusion)"]
-      },
-      {
-        subtitle: "Frameworks",
-        skills: ["PyTorch", "TensorFlow", "CUDA", "HF Transformers", "LangChain", "LangGraph", "Ollama", "OpenAI API"]
+        skills: ["LLMs", "VLMs", "PyTorch", "CUDA", "HF Transformers", "LangChain", "LangGraph", "Ollama", "OpenAI API", "Vector DBs (Pinecone, FAISS, Qdrant)"]
       },
       {
         subtitle: "Advanced Techniques",
-        skills: ["RAG (Retrieval-Augmented Generation)", "Vector DBs (Pinecone, FAISS, Qdrant)", "Fine-Tuning (LoRA, QLoRA, PEFT)", "Prompt Engineering (CoT, ReAct, Self-Consistency)", "Agent Workflows (LangGraph, LangSmith, smolagents)", "Observability", "AI Ethics and Governance"]
-      }
-    ]
-  },
-  {
-    emoji: "☁️",
-    title: "Cloud & Infrastructure",
-    subcategories: [
-      {
-        subtitle: "Cloud Platforms & Services",
-        skills: ["AWS (SageMaker, Bedrock, Lambda, API Gateway, EC2, S3)", "Azure, GCP (Basics)"]
-      },
-      {
-        subtitle: "MLOps, Deployment",
-        skills: ["Docker", "Kubernetes", "Terraform", "Grafana", "Jenkins", "bun", "Vercel"]
+        skills: ["RAG", "Fine-Tuning (LoRA, QLoRA, PEFT)", "Prompt Engineering (CoT, ReAct)", "Agent Workflows (LangGraph, LangSmith, smolagents)", "Observability", "AI Ethics and Governance"]
       }
     ]
   },
@@ -85,10 +75,6 @@ const skillCategories = [
       {
         subtitle: "Developer Tools & UI/UX",
         skills: ["VSCode", "LaTeX", "Postman", "Notion", "Figma", "Balsamiq Wireframes", "Apache ECharts", "Blender"]
-      },
-      {
-       subtitle: "CI/CD & Project Tools",
-       skills: ["Jira", "Git", "Github", "Github Actions", "Gitlab"]
       },
       {
         subtitle: "OS",
