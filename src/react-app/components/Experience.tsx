@@ -34,7 +34,7 @@ const experiences = [
     period: "April 2023 - July 2023",
     location: "Hyderabad, India", 
     achievements: [
-      "Architected, developed and deployed StateStreetGPT chatbot using OpenAI’s GPT on Azure AKS using Python, FastAPI, TypeScript, PostgreSQL.",
+      "Architected, developed and deployed StateStreetGPT chatbot using OpenAI's GPT on Azure AKS using Python, FastAPI, TypeScript, PostgreSQL.",
       "Integrated Azure Text-to-Speech, Speech-to-Text and context switching, reducing mean response time 30 %.",
       "Mentored interns on full-stack & DevOps best practices, leading to full-time offers for all.",
       "Collaborated with cross-functional teams to enhance software solutions."
@@ -67,72 +67,112 @@ const experiences = [
   }
 ]
 
+// Group experiences by company
+const groupedExperiences = experiences.reduce((acc, exp) => {
+  if (!acc[exp.company]) {
+    acc[exp.company] = [];
+  }
+  acc[exp.company].push(exp);
+  return acc;
+}, {} as Record<string, typeof experiences>);
+
 export default function Experience() {
   return (
     <Section id="experience" title="Experience">
-      <div className="space-y-12">
-        {experiences.map((exp, index) => (
-          <motion.div
-            key={`${exp.company}-${exp.period}`}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className="relative pl-8 border-l-2 border-orange-600/30"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.4, delay: index * 0.2 + 0.3 }}
-              viewport={{ once: true }}
-              className="absolute -left-2 top-0 w-4 h-4 bg-orange-600 rounded-full"
-            />
-            
-            <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-2xl font-semibold text-white mb-1">
-                    {exp.title}
-                  </h3>
-                  <h4 className="text-xl text-orange-600 font-medium">
-                    {exp.company}
-                  </h4>
-                </div>
-                
-                <div className="flex flex-col md:items-end mt-2 md:mt-0 space-y-1">
-                  <div className="flex items-center gap-2 text-gray-400">
-                    <Calendar className="w-4 h-4" />
-                    <span className="font-mono">{exp.period}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-400">
-                    <MapPin className="w-4 h-4" />
-                    <span>{exp.location}</span>
-                  </div>
-                </div>
+      <div className="space-y-16">
+        {Object.entries(groupedExperiences).map(([company, companyExps], companyIndex) => (
+          <div key={company} className="relative">
+            <div className="relative pl-8">
+              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-orange-600/30" />
+              
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: companyIndex * 0.3 }}
+                viewport={{ once: true }}
+                className="mb-8"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.4, delay: companyIndex * 0.3 + 0.2 }}
+                  viewport={{ once: true }}
+                  className="absolute -left-2 top-0 w-4 h-4 bg-orange-600 rounded-full"
+                />
+                <h3 className="text-2xl font-semibold text-orange-600 mb-2">{company}</h3>
+              </motion.div>
+              
+              <div className="space-y-8">
+                {companyExps.map((exp, expIndex) => (
+                  <motion.div
+                    key={`${exp.company}-${exp.period}`}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: companyIndex * 0.3 + expIndex * 0.2 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                  >
+
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 0.4, delay: companyIndex * 0.3 + expIndex * 0.2 + 0.3 }}
+                      viewport={{ once: true }}
+                      className="absolute -left-2 top-0 w-3 h-3 bg-orange-600 rounded-full border-2 border-gray-900"
+                    />
+                    
+                    <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-semibold text-white mb-1">
+                            {exp.title}
+                          </h4>
+                        </div>
+                        
+                        <div className="flex flex-col md:items-end mt-2 md:mt-0 space-y-1">
+                          <div className="flex items-center gap-2 text-gray-400">
+                            <Calendar className="w-4 h-4" />
+                            <span className="font-mono">{exp.period}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-gray-400">
+                            <MapPin className="w-4 h-4" />
+                            <span>{exp.location}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <ul className="space-y-2">
+                        {exp.achievements.map((achievement, achIndex) => (
+                          <motion.li
+                            key={achIndex}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ 
+                              duration: 0.4, 
+                              delay: companyIndex * 0.3 + expIndex * 0.2 + achIndex * 0.1 + 0.4 
+                            }}
+                            viewport={{ once: true }}
+                            className="flex items-start gap-3 text-gray-300"
+                          >
+                            <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0" />
+                            <span>{achievement}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
               
-              
-              
-              <ul className="space-y-2">
-                {exp.achievements.map((achievement, achIndex) => (
-                  <motion.li
-                    key={achIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ 
-                      duration: 0.4, 
-                      delay: index * 0.2 + achIndex * 0.1 + 0.4 
-                    }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3 text-gray-300"
-                  >
-                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0" />
-                    <span>{achievement}</span>
-                  </motion.li>
-                ))}
-              </ul>
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.4, delay: companyIndex * 0.3 + companyExps.length * 0.2 + 0.5 }}
+                viewport={{ once: true }}
+                className="absolute -left-2 bottom-0 w-4 h-4 bg-orange-600 rounded-full"
+              />
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </Section>
